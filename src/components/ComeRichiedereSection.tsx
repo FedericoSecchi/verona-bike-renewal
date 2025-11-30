@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { MessageCircle, Send } from "lucide-react";
+import { Send } from "lucide-react";
 
 const steps = [
   "Scrivi su WhatsApp e indica che tipo di bici cerchi.",
-  "Riceverai le proposte disponibili in quel momento, con foto e dettagli.",
+  "Riceverai le proposte disponibili con foto e dettagli.",
   "Scegli la bici che preferisci.",
   "Concordate il ritiro a Verona.",
 ];
@@ -31,27 +31,27 @@ const ComeRichiedereSection = () => {
   };
 
   return (
-    <section id="come-richiedere" className="section-padding bg-secondary/50">
+    <section id="come-richiedere" className="section-padding border-t-2 border-foreground">
       <div className="container-width">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Steps */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8 animate-on-scroll">
+            <span className="text-sm uppercase tracking-widest text-muted-foreground font-medium mb-4 block animate-on-scroll">
+              03 — Richiesta
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-12 uppercase leading-tight animate-on-scroll">
               Come richiedere una bici
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 animate-on-scroll animate-on-scroll-delay-1">
-              È tutto molto semplice:
-            </p>
-            <div className="space-y-6">
+            <div className="space-y-0 border-l-2 border-foreground">
               {steps.map((step, index) => (
                 <div
                   key={index}
-                  className={`flex gap-4 animate-on-scroll animate-on-scroll-delay-${index + 1}`}
+                  className={`flex gap-6 pl-6 py-4 animate-on-scroll animate-on-scroll-delay-${index + 1}`}
                 >
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold text-sm">
+                  <span className="flex-shrink-0 w-8 h-8 border-2 border-foreground bg-foreground text-background flex items-center justify-center font-display font-bold text-sm">
                     {index + 1}
-                  </div>
-                  <p className="text-muted-foreground pt-1">{step}</p>
+                  </span>
+                  <p className="text-foreground pt-1">{step}</p>
                 </div>
               ))}
             </div>
@@ -59,29 +59,30 @@ const ComeRichiedereSection = () => {
 
           {/* Form */}
           <div className="animate-on-scroll">
-            <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
-              <h3 className="text-xl font-semibold text-foreground mb-2">
-                Mandami direttamente i tuoi dati
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                Compila questi campi: al click sul pulsante si aprirà WhatsApp con
-                un messaggio già pronto da inviare.
-              </p>
+            <div className="border-2 border-foreground bg-background">
+              <div className="border-b-2 border-foreground p-6">
+                <h3 className="text-lg font-display font-bold text-foreground uppercase">
+                  Invia i tuoi dati
+                </h3>
+                <p className="text-muted-foreground text-sm mt-2">
+                  Al click si aprirà WhatsApp con un messaggio pronto.
+                </p>
+              </div>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="p-6 space-y-5">
                 <div>
                   <label
                     htmlFor="tipoBici"
-                    className="block text-sm font-medium text-foreground mb-2"
+                    className="block text-xs font-semibold text-foreground mb-2 uppercase tracking-wide"
                   >
-                    Tipo di bici (città, passeggio, ecc.)
+                    Tipo di bici
                   </label>
                   <select
                     id="tipoBici"
                     name="tipoBici"
                     value={formData.tipoBici}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                    className="w-full px-4 py-3 bg-background border-2 border-foreground text-foreground focus:outline-none focus:ring-0 transition-all"
                   >
                     <option value="">Seleziona...</option>
                     <option value="città">Bici da città</option>
@@ -94,31 +95,31 @@ const ComeRichiedereSection = () => {
                 <div>
                   <label
                     htmlFor="usoPrincipale"
-                    className="block text-sm font-medium text-foreground mb-2"
+                    className="block text-xs font-semibold text-foreground mb-2 uppercase tracking-wide"
                   >
-                    Uso principale (lavoro, studio, tempo libero)
+                    Uso principale
                   </label>
                   <select
                     id="usoPrincipale"
                     name="usoPrincipale"
                     value={formData.usoPrincipale}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                    className="w-full px-4 py-3 bg-background border-2 border-foreground text-foreground focus:outline-none focus:ring-0 transition-all"
                   >
                     <option value="">Seleziona...</option>
                     <option value="lavoro">Andare al lavoro</option>
                     <option value="studio">Andare a studiare</option>
                     <option value="tempo libero">Tempo libero</option>
-                    <option value="commissioni">Commissioni in città</option>
+                    <option value="commissioni">Commissioni</option>
                   </select>
                 </div>
 
                 <div>
                   <label
                     htmlFor="budget"
-                    className="block text-sm font-medium text-foreground mb-2"
+                    className="block text-xs font-semibold text-foreground mb-2 uppercase tracking-wide"
                   >
-                    Budget indicativo (€)
+                    Budget (€)
                   </label>
                   <input
                     type="text"
@@ -127,16 +128,16 @@ const ComeRichiedereSection = () => {
                     value={formData.budget}
                     onChange={handleInputChange}
                     placeholder="es. 80-120"
-                    className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                    className="w-full px-4 py-3 bg-background border-2 border-foreground text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-0 transition-all"
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="altezza"
-                    className="block text-sm font-medium text-foreground mb-2"
+                    className="block text-xs font-semibold text-foreground mb-2 uppercase tracking-wide"
                   >
-                    La tua altezza (per la taglia)
+                    Altezza (per la taglia)
                   </label>
                   <input
                     type="text"
@@ -145,13 +146,13 @@ const ComeRichiedereSection = () => {
                     value={formData.altezza}
                     onChange={handleInputChange}
                     placeholder="es. 175 cm"
-                    className="w-full px-4 py-3 bg-background border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                    className="w-full px-4 py-3 bg-background border-2 border-foreground text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-0 transition-all"
                   />
                 </div>
 
                 <button type="submit" className="w-full btn-whatsapp py-4">
                   <Send className="w-5 h-5" />
-                  Apri WhatsApp con il messaggio
+                  Apri WhatsApp
                 </button>
               </form>
             </div>

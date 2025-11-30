@@ -1,29 +1,27 @@
-import { MessageCircle, ChevronDown } from "lucide-react";
+import { MessageCircle, ArrowDown } from "lucide-react";
 import heroBike from "@/assets/hero-bike.png";
 
 const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center section-padding pt-24 md:pt-32"
+      className="min-h-screen flex items-center section-padding pt-28 md:pt-36"
     >
       <div className="container-width w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text Content */}
           <div className="order-2 lg:order-1">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 animate-fade-in-up">
-              Biciclette ricondizionate, affidabili e convenienti a{" "}
-              <span className="text-primary">Verona</span>.
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-foreground leading-[0.95] mb-8 animate-fade-in-up uppercase">
+              Biciclette ricondizionate a Verona.
             </h1>
             <p
-              className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl animate-fade-in-up"
+              className="text-lg md:text-xl text-muted-foreground mb-10 max-w-lg animate-fade-in-up leading-relaxed"
               style={{ animationDelay: "0.1s" }}
             >
-              Bici controllate, sistemate e pronte per pedalare. Ideali per
-              studenti, famiglie e chi si muove ogni giorno in città.
+              Controllate, sistemate, pronte per pedalare. Per studenti, famiglie e chi si muove in città.
             </p>
             <div
-              className="flex flex-wrap gap-4 animate-fade-in-up"
+              className="flex flex-col sm:flex-row gap-4 animate-fade-in-up"
               style={{ animationDelay: "0.2s" }}
             >
               <a
@@ -37,32 +35,31 @@ const HeroSection = () => {
               </a>
               <a href="#come-funziona" className="btn-secondary">
                 Come funziona
-                <ChevronDown className="w-4 h-4" />
+                <ArrowDown className="w-4 h-4" />
               </a>
             </div>
           </div>
 
           {/* Hero Image */}
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/40 rounded-full blur-3xl scale-110" />
+            <div className="relative border-2 border-foreground p-4 bg-muted">
               <img
                 src={heroBike}
-                alt="Bicicletta ricondizionata verde"
-                className="relative w-full max-w-md lg:max-w-lg xl:max-w-xl animate-float"
+                alt="Bicicletta ricondizionata"
+                className="w-full max-w-sm lg:max-w-md xl:max-w-lg grayscale hover:grayscale-0 transition-all duration-500"
               />
             </div>
           </div>
         </div>
 
         {/* Scroll indicator */}
-        <div className="hidden md:flex justify-center mt-16 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
+        <div className="hidden md:flex justify-start mt-20 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
           <a
             href="#come-funziona"
-            className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+            className="flex items-center gap-3 text-foreground hover:underline uppercase text-sm tracking-wide font-medium"
           >
-            <span className="text-sm">Scopri di più</span>
-            <ChevronDown className="w-5 h-5 animate-bounce" />
+            <span>Scorri</span>
+            <ArrowDown className="w-4 h-4" />
           </a>
         </div>
       </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,62 +6,55 @@
 
 @layer base {
   :root {
-    --background: 45 20% 98%;
-    --foreground: 220 20% 15%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 5%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 15%;
+    --card-foreground: 0 0% 5%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 15%;
+    --popover-foreground: 0 0% 5%;
 
-    --primary: 145 35% 42%;
+    --primary: 0 0% 5%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 45 15% 94%;
-    --secondary-foreground: 220 20% 20%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 5%;
 
-    --muted: 45 10% 92%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 145 25% 92%;
-    --accent-foreground: 145 35% 30%;
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 5%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 45 15% 88%;
-    --input: 45 15% 88%;
-    --ring: 145 35% 42%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 0% 5%;
 
-    --radius: 0.75rem;
-
-    /* Custom tokens */
-    --sage: 145 35% 42%;
-    --sage-light: 145 25% 92%;
-    --sage-dark: 145 35% 30%;
-    --cream: 45 20% 98%;
-    --warm-gray: 220 10% 45%;
+    --radius: 0;
   }
 
   .dark {
-    --background: 220 20% 10%;
-    --foreground: 45 20% 95%;
-    --card: 220 20% 12%;
-    --card-foreground: 45 20% 95%;
-    --popover: 220 20% 12%;
-    --popover-foreground: 45 20% 95%;
-    --primary: 145 35% 50%;
-    --primary-foreground: 220 20% 10%;
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 45 20% 95%;
-    --muted: 220 15% 20%;
-    --muted-foreground: 220 10% 60%;
-    --accent: 145 25% 20%;
-    --accent-foreground: 145 35% 70%;
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 145 35% 50%;
+    --background: 0 0% 5%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 98%;
   }
 }
 
@@ -75,14 +68,19 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer components {
   .section-padding {
-    @apply px-5 py-16 md:px-8 md:py-24 lg:px-12 lg:py-32;
+    @apply px-5 py-20 md:px-8 md:py-28 lg:px-12 lg:py-36;
   }
 
   .container-width {
@@ -94,8 +92,8 @@
   /* Scroll animations */
   .animate-on-scroll {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   }
 
   .animate-on-scroll.visible {
@@ -115,47 +113,50 @@
     transition-delay: 0.3s;
   }
 
-  /* Hover effects */
+  /* Brutalist hover effects */
   .hover-lift {
-    @apply transition-all duration-300 ease-out;
+    @apply transition-all duration-200 ease-out;
   }
 
   .hover-lift:hover {
     @apply -translate-y-1;
-    box-shadow: 0 10px 40px -10px hsl(var(--sage) / 0.2);
+    box-shadow: 8px 8px 0 0 hsl(var(--foreground));
   }
 
-  /* Button styles */
+  /* Brutalist button styles */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-full transition-all duration-300 ease-out;
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-foreground text-background font-semibold uppercase tracking-wide text-sm border-2 border-foreground transition-all duration-200;
   }
 
   .btn-primary:hover {
-    @apply scale-105;
-    box-shadow: 0 8px 30px -8px hsl(var(--sage) / 0.5);
+    @apply bg-background text-foreground;
+    box-shadow: 4px 4px 0 0 hsl(var(--foreground));
+    transform: translate(-2px, -2px);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground font-medium rounded-full border border-border transition-all duration-300 ease-out;
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-background text-foreground font-semibold uppercase tracking-wide text-sm border-2 border-foreground transition-all duration-200;
   }
 
   .btn-secondary:hover {
-    @apply bg-accent border-primary/20;
+    box-shadow: 4px 4px 0 0 hsl(var(--foreground));
+    transform: translate(-2px, -2px);
   }
 
   .btn-whatsapp {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-full transition-all duration-300 ease-out;
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold uppercase tracking-wide text-sm border-2 transition-all duration-200;
     background-color: #25D366;
-    color: white;
+    border-color: #000;
+    color: #000;
   }
 
   .btn-whatsapp:hover {
-    @apply scale-105;
-    box-shadow: 0 8px 30px -8px rgba(37, 211, 102, 0.5);
+    box-shadow: 4px 4px 0 0 #000;
+    transform: translate(-2px, -2px);
   }
 
-  /* Glass effect for header */
+  /* Brutalist header */
   .glass-header {
-    @apply bg-background/80 backdrop-blur-md border-b border-border/50;
+    @apply bg-background border-b-2 border-foreground;
   }
 }
