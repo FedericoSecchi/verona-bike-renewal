@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector(".site-header");
   const mobileToggle = document.getElementById("mobile-menu-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
+  const mobileIcon = document.getElementById("mobile-menu-icon");
 
   // Header shadow / border on scroll
   function handleScroll() {
@@ -19,18 +20,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Mobile menu toggle
   if (mobileToggle && mobileMenu) {
+    const setMenuState = (isOpen) => {
+      mobileMenu.classList.toggle("open", isOpen);
+      mobileToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      if (mobileIcon) {
+        mobileIcon.textContent = isOpen ? "✕" : "☰";
+      }
+    };
+
     mobileToggle.addEventListener("click", function () {
-      mobileMenu.classList.toggle("open");
-      const expanded = mobileToggle.getAttribute("aria-expanded") === "true";
-      mobileToggle.setAttribute("aria-expanded", expanded ? "false" : "true");
+      const willOpen = !mobileMenu.classList.contains("open");
+      setMenuState(willOpen);
     });
 
     // Close mobile menu when clicking a nav link
     mobileMenu.addEventListener("click", function (event) {
       const target = event.target;
       if (target.tagName && target.tagName.toLowerCase() === "a") {
-        mobileMenu.classList.remove("open");
-        mobileToggle.setAttribute("aria-expanded", "false");
+        setMenuState(false);
       }
     });
   }
