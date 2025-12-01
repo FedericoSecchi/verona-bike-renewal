@@ -3,51 +3,561 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>BiciRinova - Biciclette ricondizionate a Verona</title>
-    <meta name="description" content="Biciclette ricondizionate, affidabili e convenienti a Verona. Bici controllate e pronte per pedalare, ideali per studenti, famiglie e pendolari. Scrivi su WhatsApp per vedere le bici disponibili oggi." />
-    <meta name="keywords" content="biciclette ricondizionate Verona, bici usate Verona, bici economiche Verona, biciclette di seconda mano, bici per studenti Verona" />
+    <meta
+      name="description"
+      content="Biciclette ricondizionate, affidabili e convenienti a Verona. Bici controllate e pronte per pedalare, ideali per studenti, famiglie e pendolari. Scrivi su WhatsApp per vedere le bici disponibili oggi."
+    />
+    <meta
+      name="keywords"
+      content="biciclette ricondizionate Verona, bici usate Verona, bici economiche Verona, biciclette di seconda mano, bici per studenti Verona"
+    />
     <meta name="author" content="BiciRinova" />
     <link rel="canonical" href="https://bicirinova.it/" />
 
     <meta property="og:title" content="BiciRinova - Biciclette ricondizionate a Verona" />
-    <meta property="og:description" content="Biciclette ricondizionate, affidabili e convenienti a Verona. Bici controllate e pronte per pedalare, ideali per studenti, famiglie e pendolari." />
+    <meta
+      property="og:description"
+      content="Biciclette ricondizionate, affidabili e convenienti a Verona. Bici controllate e pronte per pedalare, ideali per studenti, famiglie e pendolari."
+    />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="it_IT" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="BiciRinova - Biciclette ricondizionate a Verona" />
-    <meta name="twitter:description" content="Biciclette ricondizionate, affidabili e convenienti a Verona. Scrivi su WhatsApp per vedere le bici disponibili." />
+    <meta
+      name="twitter:description"
+      content="Biciclette ricondizionate, affidabili e convenienti a Verona. Scrivi su WhatsApp per vedere le bici disponibili."
+    />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "BiciRinova",
-      "description": "Biciclette ricondizionate, affidabili e convenienti a Verona",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Verona",
-        "addressCountry": "IT"
-      },
-      "telephone": "+393519621721",
-      "priceRange": "€",
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "09:00",
-        "closes": "19:00"
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "BiciRinova",
+        "description": "Biciclette ricondizionate, affidabili e convenienti a Verona",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Verona",
+          "addressCountry": "IT"
+        },
+        "telephone": "+393519621721",
+        "priceRange": "€",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "09:00",
+          "closes": "19:00"
+        }
       }
-    }
     </script>
+
+    <link rel="stylesheet" href="./styles.css" />
   </head>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body class="bg-background text-foreground">
+    <!-- Header -->
+    <header class="site-header bg-background">
+      <div class="container-width" style="padding-inline: 1.25rem; max-width: 72rem;">
+        <div class="site-header-inner">
+          <!-- Logo -->
+          <a href="#hero" class="logo-link">
+            <span class="logo-text font-display text-foreground uppercase tracking-tight">
+              BiciRinova
+            </span>
+          </a>
+
+          <!-- Desktop navigation -->
+          <nav class="desktop-nav">
+            <a href="#come-funziona">Come funziona</a>
+            <a href="#tipi-di-bici">Tipi di bici</a>
+            <a href="#come-richiedere">Richiedi</a>
+            <a href="#donazioni">Donazioni</a>
+            <a href="#contatto">Contatto</a>
+          </nav>
+
+          <!-- Desktop CTA -->
+          <a
+            href="https://wa.me/393519621721"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-whatsapp"
+            style="display: none;"
+            id="desktop-whatsapp"
+          >
+            <!-- Icon replaced by simple text to avoid external icon libs -->
+            <span>WhatsApp</span>
+          </a>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-toggle"
+            class="mobile-menu-toggle"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <!-- Simple icon substitute -->
+            <span>☰</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu">
+          <nav class="mobile-menu-nav">
+            <a href="#come-funziona">Come funziona</a>
+            <a href="#tipi-di-bici">Tipi di bici</a>
+            <a href="#come-richiedere">Richiedi</a>
+            <a href="#donazioni">Donazioni</a>
+            <a href="#contatto">Contatto</a>
+            <a
+              href="https://wa.me/393519621721"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section id="hero" class="hero min-h-screen section-padding">
+        <div class="container-width">
+          <div class="hero-grid">
+            <!-- Text Content -->
+            <div>
+              <h1 class="hero-title font-display font-bold text-foreground uppercase animate-fade-in-up">
+                Biciclette ricondizionate a Verona.
+              </h1>
+              <p
+                class="hero-subtitle animate-fade-in-up leading-relaxed max-w-lg"
+                style="animation-delay: 0.1s"
+              >
+                Controllate, sistemate, pronte per pedalare. Per studenti, famiglie e chi si muove in
+                città.
+              </p>
+              <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.2s">
+                <a
+                  href="https://wa.me/393519621721?text=Ciao%2C%20sono%20interessato%20a%20una%20bici%20ricondizionata.%20Mi%20puoi%20dire%20cosa%20hai%20disponibile%20oggi%3F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-whatsapp"
+                >
+                  Scrivi su WhatsApp
+                </a>
+                <a href="#come-funziona" class="btn-secondary">
+                  Come funziona
+                </a>
+              </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="hero-image-wrapper">
+              <div class="hero-image-frame">
+                <img
+                  src="/img/hero-bike-6FXew4Fs.png"
+                  alt="Bicicletta ricondizionata"
+                  class="hero-image"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Scroll indicator -->
+          <div class="scroll-indicator animate-fade-in-up" style="animation-delay: 0.4s">
+            <a
+              href="#come-funziona"
+              class="text-foreground uppercase text-sm tracking-wide font-medium"
+            >
+              Scorri ↓
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Come funziona Section -->
+      <section id="come-funziona" class="section-padding section-border-top">
+        <div class="container-width">
+          <div class="two-column-grid">
+            <!-- Image -->
+            <div class="animate-on-scroll">
+              <div class="bordered-block">
+                <img
+                  src="/img/A 10-second animated flat illustration video in a clean, minimal style. The bicycle gently rocks, a soft light passes over it, and the helmet makes a small bounce. Soft green background, no new objects, no camera shake. The animation feels .gif"
+                  alt="Attrezzi per la manutenzione delle biciclette"
+                />
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div>
+              <span class="section-label animate-on-scroll">01 — Processo</span>
+              <h2 class="section-heading font-display text-foreground leading-tight animate-on-scroll">
+                Come funziona
+              </h2>
+              <div class="left-border-column">
+                <p class="text-lg text-muted-foreground animate-on-scroll animate-on-scroll-delay-1">
+                  Recuperiamo biciclette inutilizzate e diamo loro una seconda vita.
+                </p>
+                <p class="text-lg text-muted-foreground animate-on-scroll animate-on-scroll-delay-1">
+                  Ogni bici viene controllata con cura: freni, cambio, ruote e sicurezza generale.
+                </p>
+                <p class="text-lg text-muted-foreground animate-on-scroll animate-on-scroll-delay-2">
+                  L'obiettivo è offrire bici affidabili e accessibili per l'uso quotidiano.
+                </p>
+              </div>
+
+              <div class="animate-on-scroll animate-on-scroll-delay-2" style="margin-top: 3rem;">
+                <h3 class="text-sm uppercase tracking-widest text-foreground font-semibold mb-6">
+                  Prima della consegna:
+                </h3>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                  <li class="flex items-center gap-4" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <div
+                      style="
+                        flex-shrink: 0;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        border: 2px solid hsl(var(--foreground));
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.75rem;
+                      "
+                    >
+                      ✓
+                    </div>
+                    <span class="text-foreground font-medium">Controllata e regolata</span>
+                  </li>
+                  <li class="flex items-center gap-4" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <div
+                      style="
+                        flex-shrink: 0;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        border: 2px solid hsl(var(--foreground));
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.75rem;
+                      "
+                    >
+                      ✓
+                    </div>
+                    <span class="text-foreground font-medium">Testata su strada</span>
+                  </li>
+                  <li class="flex items-center gap-4" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <div
+                      style="
+                        flex-shrink: 0;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        border: 2px solid hsl(var(--foreground));
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 0.75rem;
+                      "
+                    >
+                      ✓
+                    </div>
+                    <span class="text-foreground font-medium">Verificata la sicurezza</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tipi di bici Section -->
+      <section id="tipi-di-bici" class="section-padding section-border-top muted-section">
+        <div class="container-width">
+          <!-- Header -->
+          <div style="margin-bottom: 4rem;">
+            <span class="section-label animate-on-scroll">02 — Tipologie</span>
+            <h2
+              class="section-heading font-display text-foreground leading-tight animate-on-scroll max-w-2xl"
+            >
+              Che tipo di bici puoi trovare
+            </h2>
+          </div>
+
+          <!-- Illustration -->
+          <div class="animate-on-scroll bordered-block-bg" style="margin-bottom: 4rem;">
+            <img
+              src="/img/Sin título.png"
+              alt="Diversi tipi di biciclette ricondizionate"
+            />
+          </div>
+
+          <!-- Bike Cards -->
+          <div class="bike-cards">
+            <div class="bike-card hover-lift animate-on-scroll animate-on-scroll-delay-1">
+              <span class="bike-number">01</span>
+              <h3 class="bike-title font-display text-foreground">Bici da città</h3>
+              <p class="text-muted-foreground leading-relaxed">
+                Comode, con posizione verticale. Per spostarsi in centro, andare al lavoro o
+                all'università.
+              </p>
+            </div>
+            <div class="bike-card hover-lift animate-on-scroll animate-on-scroll-delay-2">
+              <span class="bike-number">02</span>
+              <h3 class="bike-title font-display text-foreground">Bici per studenti</h3>
+              <p class="text-muted-foreground leading-relaxed">
+                Soluzioni semplici e robuste per muoversi ogni giorno spendendo il giusto.
+              </p>
+            </div>
+            <div class="bike-card hover-lift animate-on-scroll animate-on-scroll-delay-3">
+              <span class="bike-number">03</span>
+              <h3 class="bike-title font-display text-foreground">Bici da passeggio</h3>
+              <p class="text-muted-foreground leading-relaxed">
+                Per pedalare nel tempo libero, fare commissioni o una gita nel weekend.
+              </p>
+            </div>
+          </div>
+
+          <!-- Note -->
+          <div class="bordered-block-bg animate-on-scroll">
+            <p class="text-muted-foreground leading-relaxed" style="margin-bottom: 1.5rem; font-size: 1.125rem;">
+              I modelli cambiano in base alle bici disponibili. Per sapere cosa c'è oggi, scrivi su
+              WhatsApp.
+            </p>
+            <a
+              href="https://wa.me/393519621721?text=Ciao%2C%20sono%20interessato%20a%20una%20bici%20ricondizionata.%20Mi%20puoi%20dire%20cosa%20hai%20disponibile%20oggi%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-whatsapp"
+            >
+              Scrivi su WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Come richiedere Section -->
+      <section id="come-richiedere" class="section-padding section-border-top">
+        <div class="container-width">
+          <div class="two-column-grid">
+            <!-- Steps -->
+            <div>
+              <span class="section-label animate-on-scroll">03 — Richiesta</span>
+              <h2
+                class="section-heading font-display text-foreground leading-tight animate-on-scroll"
+              >
+                Come richiedere una bici
+              </h2>
+              <div class="steps-list">
+                <div class="step-item animate-on-scroll animate-on-scroll-delay-1">
+                  <span class="step-number">1</span>
+                  <p class="text-foreground">
+                    Scrivi su WhatsApp e indica che tipo di bici cerchi.
+                  </p>
+                </div>
+                <div class="step-item animate-on-scroll animate-on-scroll-delay-2">
+                  <span class="step-number">2</span>
+                  <p class="text-foreground">
+                    Riceverai le proposte disponibili con foto e dettagli.
+                  </p>
+                </div>
+                <div class="step-item animate-on-scroll animate-on-scroll-delay-3">
+                  <span class="step-number">3</span>
+                  <p class="text-foreground">Scegli la bici che preferisci.</p>
+                </div>
+                <div class="step-item animate-on-scroll animate-on-scroll-delay-3">
+                  <span class="step-number">4</span>
+                  <p class="text-foreground">Concordate il ritiro a Verona.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form -->
+            <div class="animate-on-scroll">
+              <div class="form-card">
+                <div class="form-card-header">
+                  <h3 class="text-lg font-display font-bold text-foreground uppercase">
+                    Invia i tuoi dati
+                  </h3>
+                  <p class="text-muted-foreground text-sm" style="margin-top: 0.5rem;">
+                    Al click si aprirà WhatsApp con un messaggio pronto.
+                  </p>
+                </div>
+
+                <form id="request-form" class="form-card-body">
+                  <div style="margin-bottom: 1.25rem;">
+                    <label for="tipoBici" class="field-label">Tipo di bici</label>
+                    <select id="tipoBici" name="tipoBici" class="field-select">
+                      <option value="">Seleziona...</option>
+                      <option value="città">Bici da città</option>
+                      <option value="passeggio">Bici da passeggio</option>
+                      <option value="studente">Bici per studenti</option>
+                      <option value="altro">Altro</option>
+                    </select>
+                  </div>
+
+                  <div style="margin-bottom: 1.25rem;">
+                    <label for="usoPrincipale" class="field-label">Uso principale</label>
+                    <select id="usoPrincipale" name="usoPrincipale" class="field-select">
+                      <option value="">Seleziona...</option>
+                      <option value="lavoro">Andare al lavoro</option>
+                      <option value="studio">Andare a studiare</option>
+                      <option value="tempo libero">Tempo libero</option>
+                      <option value="commissioni">Commissioni</option>
+                    </select>
+                  </div>
+
+                  <div style="margin-bottom: 1.25rem;">
+                    <label for="budget" class="field-label">Budget (€)</label>
+                    <input
+                      type="text"
+                      id="budget"
+                      name="budget"
+                      placeholder="es. 80-120"
+                      class="field-input"
+                    />
+                  </div>
+
+                  <div style="margin-bottom: 1.5rem;">
+                    <label for="altezza" class="field-label">Altezza (per la taglia)</label>
+                    <input
+                      type="text"
+                      id="altezza"
+                      name="altezza"
+                      placeholder="es. 175 cm"
+                      class="field-input"
+                    />
+                  </div>
+
+                  <button type="submit" class="btn-whatsapp" style="width: 100%; padding: 1rem;">
+                    Apri WhatsApp
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Donazioni Section -->
+      <section id="donazioni" class="section-padding section-border-top muted-section">
+        <div class="container-width">
+          <div class="two-column-grid">
+            <!-- Content -->
+            <div>
+              <span class="section-label animate-on-scroll">04 — Donazioni</span>
+              <h2
+                class="section-heading font-display text-foreground leading-tight animate-on-scroll"
+              >
+                Dai una seconda vita alla tua bici
+              </h2>
+              <div class="left-border-column" style="margin-bottom: 2.5rem;">
+                <p class="text-lg text-muted-foreground animate-on-scroll animate-on-scroll-delay-1">
+                  Hai una bicicletta che non usi più e sta solo prendendo polvere?
+                </p>
+                <p class="text-lg text-muted-foreground animate-on-scroll animate-on-scroll-delay-2">
+                  Valutiamo biciclette inutilizzate per ricondizionarle e rimetterle in circolo.
+                </p>
+                <p class="text-lg text-muted-foreground animate-on-scroll animate-on-scroll-delay-2">
+                  Liberi spazio, eviti sprechi e aiuti qualcuno a trovare una bici accessibile.
+                </p>
+              </div>
+              <a
+                href="https://wa.me/393519621721?text=Ciao%2C%20ho%20una%20bici%20che%20non%20uso%20pi%C3%B9%20e%20vorrei%20sapere%20se%20pu%C3%B2%20essere%20ricondizionata."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-whatsapp animate-on-scroll animate-on-scroll-delay-3"
+              >
+                Scrivi su WhatsApp
+              </a>
+            </div>
+
+            <!-- Image -->
+            <div class="animate-on-scroll">
+              <div class="bordered-block-bg">
+                <img
+                  src="/img/bike-transform-CxBOeUET.png"
+                  alt="Trasformazione di una bici vecchia in una ricondizionata"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer / Contatto -->
+    <footer id="contatto" class="site-footer section-padding">
+      <div class="container-width">
+        <div class="footer-grid">
+          <!-- Contact Info -->
+          <div>
+            <span class="footer-label animate-on-scroll">05 — Contatto</span>
+            <h2 class="footer-heading font-display animate-on-scroll">Contatto e zona</h2>
+            <div class="footer-contact-column">
+              <div class="footer-contact-row animate-on-scroll animate-on-scroll-delay-1">
+                <div style="margin-top: 0.2rem;">📍</div>
+                <div>
+                  <p class="font-semibold uppercase text-sm tracking-wide">Zona</p>
+                  <p style="color: rgba(255, 255, 255, 0.7);">Verona e dintorni</p>
+                </div>
+              </div>
+              <div class="footer-contact-row animate-on-scroll animate-on-scroll-delay-2">
+                <div style="margin-top: 0.2rem;">💬</div>
+                <div>
+                  <p class="font-semibold uppercase text-sm tracking-wide">WhatsApp</p>
+                  <a
+                    href="https://wa.me/393519621721"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style="color: rgba(255, 255, 255, 0.7); text-decoration: none;"
+                    onmouseover="this.style.textDecoration='underline'; this.style.color='#ffffff';"
+                    onmouseout="this.style.textDecoration='none'; this.style.color='rgba(255,255,255,0.7)';"
+                  >
+                    +39 351 962 1721
+                  </a>
+                </div>
+              </div>
+              <div class="footer-contact-row animate-on-scroll animate-on-scroll-delay-3">
+                <div style="margin-top: 0.2rem;">⏰</div>
+                <div>
+                  <p class="font-semibold uppercase text-sm tracking-wide">Risposte</p>
+                  <p style="color: rgba(255, 255, 255, 0.7);">Rapide durante il giorno</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="animate-on-scroll" style="display: flex; flex-direction: column; justify-content: center;">
+            <p
+              class="text-lg"
+              style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem; line-height: 1.6;"
+            >
+              Hai domande sulle bici disponibili? Vuoi sapere i prezzi? Scrivi direttamente su
+              WhatsApp.
+            </p>
+            <a
+              href="https://wa.me/393519621721?text=Ciao%2C%20sono%20interessato%20a%20una%20bici%20ricondizionata.%20Mi%20puoi%20dire%20cosa%20hai%20disponibile%20oggi%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-whatsapp"
+            >
+              Scrivi su WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="footer-meta">
+          BiciRinova — Biciclette ricondizionate a Verona
+        </div>
+      </div>
+    </footer>
+
+    <script src="./script.js" defer></script>
   </body>
 </html>
